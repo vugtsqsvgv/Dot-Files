@@ -13,8 +13,6 @@ InnerContainer{
 
     id: root
 
-    property string command : "qs ipc call notificationCenter toggle"
-
     height: Config.barHeight
     width: bell.implicitWidth + 100
 

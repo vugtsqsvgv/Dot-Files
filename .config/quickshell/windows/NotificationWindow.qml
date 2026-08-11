@@ -5,35 +5,11 @@ import QtQuick.Layouts
 import Quickshell.Services.Notifications 
 import Quickshell.Io
 import qs.components
+import qs.services
 
 import 'root:/'
 
-
 Scope{
-
-    id : root
-
-    ListModel{
-            id: history
-        }
-
-    NotificationServer{
-        id: server
-        actionsSupported : true
-        bodySupported : true
-        imageSupported : true
-
-        onNotification : n =>{
-            history.insert(0,{
-                summary: n.summary,
-                body: n.body,
-                appName: n.appName,
-                urgency: n.urgency,
-                time: Qt.formatDateTime(new Date(), "HH:mm")
-            })
-            n.tracked = true
-        }
-    }
 
     IpcHandler{
         target: "notificationCenter"
@@ -60,8 +36,8 @@ Scope{
     }
 
     margins{
-        top: Config.barHeight + 16*2
-        right: (Config.barHeight + 16*2)/2 
+        top: Config.barHeight + 16
+        right: (Config.barHeight + 16)/2 
     }
 
     color : "transparent"
@@ -117,7 +93,7 @@ Scope{
 
             MouseArea{
                 anchors.fill: parent
-                onClicked:{history.clear()}
+                onClicked:{NotificationService.history.clear()}
             }
         }
 
@@ -125,9 +101,9 @@ Scope{
 
 
     Repeater{
-        model:history
+        model:NotificationService.history
 
-                    Rectangle{
+                    Container{
                 id: pastCard
 
                 required property var modelData 
@@ -135,10 +111,7 @@ Scope{
                 Layout.alignment : Qt.AlignTop
                 Layout.fillWidth : true
                 Layout.preferredHeight : 100
-                radius : 16
-                color : "#121212"
                 border{
-                    width : 4
                     color : modelData.urgency === NotificationUrgency.Critical ? Config.red : Config.bg1
                 }
 
@@ -159,12 +132,10 @@ Scope{
                         }
                         }
 
-                        Text{
+                        CustomText{
                         text: modelData.body
                         color: "gray"
                         font{
-                            family: "JetBrainsMono Nerd Fond Mono"
-                            pixelSize: 16
                             weight : 400
                         }
                         }
@@ -176,7 +147,7 @@ Scope{
         }
         MouseArea{
             anchors.fill:parent
-            onClicked:{history.remove(modelData.index,1)}
+            onClicked:{NotificationService.history.remove(modelData.index,1)}
         }
 
     }
@@ -199,8 +170,8 @@ Scope{
     }
 
     margins{
-        top: 24
-        right: 24
+        top: Config.barHeight + 16
+        right: (Config.barHeight + 16 )/ 2
     }
 
     color : "transparent"
@@ -217,19 +188,16 @@ Scope{
         uniformCellSizes: true
 
         Repeater{
-            model: server.trackedNotifications
+            model: NotificationService.trackedNotifications
 
-            Rectangle{
+            Container{
                 id: card
 
                 required property var modelData 
 
                 Layout.fillWidth : true
                 Layout.preferredHeight : 100
-                radius : 16
-                color : "#121212"
                 border{
-                    width : 4
                     color : modelData.urgency === NotificationUrgency.Critical ? Config.red : Config.bg1
                 }
 
@@ -258,20 +226,14 @@ Scope{
                         }
                         }
 
-                        Text{
+                        CustomText{
                         text: modelData.body
                         color: "gray"
                         font{
-                            family: "JetBrainsMono Nerd Fond Mono"
-                            pixelSize: 16
                             weight : 400
                         }
                         }
-
-                    
                 }
-
-
         }
 
         Timer{
@@ -294,4 +256,7 @@ Scope{
 
 }
 }
+
+
 }
+

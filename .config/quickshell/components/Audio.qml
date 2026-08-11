@@ -6,20 +6,18 @@ import Quickshell.Hyprland
 import Quickshell.Services.SystemTray
 import Quickshell.Services.Pipewire
 import qs.services
+import qs.components
 
 import "root:/"
 
-Rectangle{
+Container{
 
     id: root
 
     height : Config.barHeight
     width : vIcon.implicitWidth + vText.implicitWidth + 4*4
-    color : Config.bg0
-    radius : 16
 
     border{
-        width : 4
         color: {
                 if (AudioService.muted || AudioService.vol === 0 ) return Config.red
                 return Config.bg1
@@ -40,15 +38,10 @@ Rectangle{
             id: vIcon
             implicitWidth : 32
 
-        Text{
+        CustomTextIcon{
             anchors.centerIn : parent
             
             text: AudioService.icon
-            font{
-                pixelSize : 16
-                family : "JetBrainsMono Nerd Font Propo"
-                weight : 500
-            }
             color: {
                 if (AudioService.muted || AudioService.vol === 0 ) return Config.red
                 return "white"
@@ -61,16 +54,10 @@ Rectangle{
             Layout.fillHeight : true
             id: vText
             implicitWidth : 47
-        Text{
+        CustomText{
             anchors.centerIn : parent
             
             text: AudioService.vol + "%"
-            font{
-                pixelSize : 16
-                family : "JetBrainsMono Nerd Font Mono"
-                weight : 500
-            }
-            color : "white"
         }
         }
 

@@ -36,7 +36,7 @@ Container{
 
                 Layout.minimumWidth : 64
 
-            Rectangle{
+            InnerContainer{
 
                 id : workspace
 
@@ -49,7 +49,6 @@ Container{
                 }
                 height: 24
                 implicitWidth : isActive ? root.workspaceActiveWidth : (root.workspaceActiveWidth / 2)
-                radius: 16
                 anchors.centerIn: parent
                 
 
@@ -61,20 +60,12 @@ Container{
                 }
 
 
-                Text{
+                CustomText{
                 
                 
                 anchors.centerIn : parent
                 text : index + 1
-                color : "white"
-                font{
-                    pixelSize : 16
-                    weight : 500
-                    family : "JetBrainsMono Nerd Font Mono"
-
-                }
-
-
+                
             }
 
             }

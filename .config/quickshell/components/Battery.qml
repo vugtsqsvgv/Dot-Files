@@ -4,36 +4,24 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell.Hyprland
 import Quickshell.Services.SystemTray
-import Quickshell.Services.UPower 
+import Quickshell.Services.UPower
+import qs.components
+import qs.services
 
 import "root:/"
 
 
-Rectangle{
+Container{
 
 
     id: root
 
-    property var battery : UPower.displayDevice
-    property bool charging : battery.state === UPowerDeviceState.charging
-    property int level : Math.round(battery.percentage * 100)
-
-    property string icon :{
-        if (level >= 100) return String.fromCodePoint(0xf240)
-        if (level <= 10 ) return String.fromCodePoint(0xf244)
-        if ( charging ) return String.fromCodePoint(0xf0084)
-
-        return String.fromCodePoint(0xf243)
-    }
-
     height : Config.barHeight
     width: layout.implicitWidth + 16
-    color : "#121212"
-    radius : 16
-
+    
     border {
         width : 4
-        color : root.charging ? "#3d95e7" : (root.level <= 10 ? "#d65434" : root.level <= 30 ? "#dfae33" : root.level <= 70 ? "#8de82d" :  "#23f183" )
+        color : BatteryService.charging ? "#3d95e7" : (BatteryService.level <= 10 ? "#d65434" : BatteryService.level <= 30 ? "#dfae33" : BatteryService.level <= 70 ? "#8de82d" :  "#23f183" )
 
     }
     
@@ -51,24 +39,14 @@ Rectangle{
 
         spacing : 2
 
-        Text{
-            text : root.icon
-            color : root.charging ? "#3d95e7" : root.level <= 10 ? "#d65434" : root.level <= 30 ? "#dfae33" : root.level <= 70 ? "#8de82d" :  "#23f183" 
-            font{
-                family : "JetbrainMono Nerd Font Propo"
-                pixelSize : 24
-            }
+        CustomTextIcon{
+            text : BatteryService.icon
+            color : BatteryService.charging ? "#3d95e7" : BatteryService.level <= 10 ? "#d65434" : BatteryService.level <= 30 ? "#dfae33" : BatteryService.level <= 70 ? "#8de82d" :  "#23f183" 
 
         }
 
-        Text{
-            text : root.level + "%"
-            color : "white"
-            font{
-                family : "JetbrainMono Nerd Font Mono"
-                pixelSize : 16
-                weight : 500
-            }
+        CustomText{
+            text : BatteryService.level + "%"
         }
     }
 }

@@ -9,6 +9,7 @@ import Quickshell.Hyprland
 
 
 import qs.components
+import qs.services
 
 import "root:/"
 
@@ -19,14 +20,7 @@ InnerContainer{
     width: bIcon.implicitWidth + 100
     height: Config.barHeight
 
-    property var adapter : Bluetooth.defaultAdapter
-    property bool enabled : adapter ? adapter.state === BluetoothAdapterState.Enabled : false
-
-
-    property string icon : {
-        if (enabled) return String.fromCodePoint(0xf294)
-        return String.fromCodePoint(0xf00b2)
-    }
+    
 
     CustomTextIcon{
         id:bIcon
@@ -34,7 +28,7 @@ InnerContainer{
         anchors.left:parent.left
         anchors.leftMargin: 8
 
-                text: root.icon
+                text: BluetoothService.icon
             }
 
             MouseArea{

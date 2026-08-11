@@ -8,9 +8,12 @@ import Quickshell.Services.Pipewire
 import Quickshell.Networking 
 import Quickshell.Services.SystemTray
 
+import qs.services
+import qs.components
+
 import 'root:/'
 
-Rectangle{
+Container{
 
     id:root
 
@@ -18,15 +21,6 @@ Rectangle{
     width : row.implicitWidth + 16
 
     color : "transparent"
-
-    border{
-        width: 4
-        color: Config.bg1
-    }
-
-    radius : 15
-
-    readonly property var trayItems : SystemTray.items
 
     RowLayout{
         id : row
@@ -36,7 +30,7 @@ Rectangle{
         anchors.rightMargin : 8
 
     Repeater{
-        model : trayItems
+        model : TrayService.trayItems
 
             Image{
                 id:item

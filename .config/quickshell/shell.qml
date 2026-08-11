@@ -46,8 +46,8 @@ ShellRoot{
 
 //services
 
-BluetoothService{}
-NotificationsService{}
+BluetoothWindow{}
+NotificationWindow{}
 CenterWindow{}
 AudioWindow{}
 
