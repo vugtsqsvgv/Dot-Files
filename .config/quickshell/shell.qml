@@ -35,16 +35,21 @@ ShellRoot{
                 rightMargin : 16
             }
 
+            spacing : 8
+
 //components
             Clock {}
             Workspaces {}
+            Item{Layout.fillWidth:true}
             Tray{}
+            Item{Layout.fillWidth:true}
             Audio{}
             Network{}
             Battery{}
             Center{}
+        }
 
-//services
+    //services
 
 BluetoothWindow{}
 NotificationWindow{}
@@ -52,7 +57,5 @@ CenterWindow{}
 AudioWindow{}
 
 
-
-        }
     }
 }
