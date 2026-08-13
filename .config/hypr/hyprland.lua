@@ -1,5 +1,5 @@
 require("keyBinds")
-
+require("hyprglass")
 ------------------
 ---- MONITORS ----
 ------------------
@@ -51,7 +51,7 @@ hl.config({
         gaps_in  = 5,
         gaps_out = 20,
 
-        border_size = 2,
+        border_size = 0,
 
         col = {
             active_border   = "rgb(ea4c88)",
@@ -68,8 +68,8 @@ hl.config({
     },
 
     decoration = {
-        rounding       = 10,
-        rounding_power = 2,
+        rounding       = 16,
+        rounding_power = 4,
 
         -- Change transparency of focused and unfocused windows
         active_opacity   = 1.0,
