@@ -1,0 +1,35 @@
+*{
+
+	bg0:#121212;
+	bg1:#2B2B2B;
+
+	background-color:@bg0;
+	border-color:@bg1;
+	color:white;
+	font:"JetBrainsMono Nerd Font Mono medium 16";
+
+	border:0;
+	margin:0;
+	padding:0;
+	spacing:0;
+
+}
+
+window{
+
+	border-radius: 16px;
+	border: 4px;
+
+}
+
+mainbox{
+
+margin: 8;
+
+}
+
+element-icon{
+
+	size:24;
+
+}

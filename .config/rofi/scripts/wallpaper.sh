@@ -2,12 +2,6 @@
 
 WALL_DIR="$HOME/Pictures/Wallpapers"
 
-# Start awww daemon if not running
-if ! pidof awww-daemon >/dev/null; then
-    awww-daemon &
-    sleep 0.5
-fi
-
 SELECTED=$(
 	find "$WALL_DIR" -type f | while read -r img; do
  	[[ "$img" =~ \.(jpg|jpeg|png|webp|JPG|PNG)$ ]] || continue
@@ -18,7 +12,7 @@ SELECTED=$(
         -dmenu \
         -i \
         -show-icons \
-        -theme ~/.config/rofi/config.rasi \
+        -theme ~/.config/rofi/themes/wallpaper.rasi \
         -p ""
 )
 
