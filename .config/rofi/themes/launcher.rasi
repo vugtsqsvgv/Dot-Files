@@ -28,8 +28,18 @@ margin: 8;
 
 }
 
+element{
+	background-color:transparent;
+}
+
 element-icon{
 
 	size:24;
+
+}
+
+element selected.normal{
+	background-color:@bg1;
+	border-radius: 16px;
 
 }
