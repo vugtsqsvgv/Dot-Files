@@ -15,49 +15,10 @@ import qs.components
 
 import "root:/"
 
-Scope{
-    id: root
-
-    IpcHandler{
-        target: "bluetoothCenter"
-        function toggle () : void { bluetoothCenter.centerOpen =! bluetoothCenter.centerOpen }
-        function visible () : void { bluetoothCenter.centerOpen = true }
-        function hide () : void { bluetoothCenter.centerOpen = false }
-
-    }
-
-    PanelWindow{
-
-        id : bluetoothCenter
-
-        property bool centerOpen : false
-
-
-       visible: bluetoothCenter.centerOpen
-
-
-        anchors{
-            top: true
-            right: true
-            }
-
-        margins{
-            top: 24
-            right: 24
-        }
-
-        implicitWidth: 300
-        implicitHeight: 300
-
-        color: "transparent"
-
-        Container{
-            width:300
-            height: 300
 
             RowLayout{
 
-            id:layout
+            id:root
 
             anchors.fill: parent
             anchors.leftMargin: 8
@@ -115,11 +76,3 @@ Scope{
         }
 
     }
-
-        }
-
-        
-
-    }
-
-}

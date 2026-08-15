@@ -16,7 +16,7 @@ import "root:/"
                 id: root
 
 
-            width : time.implicitWidth + 16
+            implicitWidth : time.implicitWidth + 16
             height: Config.barHeight
             
             CustomText{

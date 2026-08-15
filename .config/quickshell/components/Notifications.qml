@@ -14,7 +14,9 @@ InnerContainer{
     id: root
 
     height: Config.barHeight
-    width: bell.implicitWidth + 100
+    implicitWidth: bell.implicitWidth + 100
+
+    signal clicked()
 
     CustomTextIcon{
         id :bell
@@ -29,7 +31,7 @@ InnerContainer{
     MouseArea{
 
         anchors.fill : parent
-        onClicked:{Hyprland.dispatch("hl.dsp.exec_cmd('qs ipc call notificationCenter toggle')")}
+        onClicked:{root.onClicked()}
 
     }
 

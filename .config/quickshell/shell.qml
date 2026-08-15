@@ -26,8 +26,7 @@ ShellRoot{
         implicitHeight: Config.barHeight
 
          margins.top : 16
-
-        RowLayout{
+    RowLayout{
             
             anchors{
                 fill: parent
@@ -35,24 +34,25 @@ ShellRoot{
                 rightMargin : 16
             }
 
-            spacing : 8
-
-//components
+            RowLayout{
+            spacing:16
+            Layout.alignment: Qt.AlignLeft
             Clock {}
             Workspaces {}
-            Item{Layout.fillWidth:true}
+            }
             Tray{}
-            Item{Layout.fillWidth:true}
-            Audio{}
+            RowLayout{
+            spacing:16
+            Layout.alignment: Qt.AlignRight
             Network{}
+            Audio{}
             Battery{}
             Center{}
-        }
+            }
+    }
 
     //services
-
-BluetoothWindow{}
-NotificationWindow{}
+FloatingNotificationsWindow{}
 CenterWindow{}
 AudioWindow{}
 

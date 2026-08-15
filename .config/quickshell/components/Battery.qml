@@ -17,7 +17,7 @@ Container{
     id: root
 
     height : Config.barHeight
-    width: layout.implicitWidth + 16
+    implicitWidth: layout.implicitWidth + 16
     
     border {
         width : 4

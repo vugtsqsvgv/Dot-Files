@@ -10,7 +10,7 @@ import qs.components
 import "root:/"
 
 Container{
-    width: icon.implicitWidth+32
+    implicitWidth: icon.implicitWidth+32
     height: Config.barHeight
 
     CustomTextIcon{

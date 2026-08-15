@@ -9,66 +9,43 @@ import qs.services
 
 import 'root:/'
 
-// notification center
+Scope{
+    id: root
 
-        ColumnLayout{
+    // floating notifications
 
-            anchors{
-                fill : parent
-                margins : 16
-            }
-
-
-    
-
-    RowLayout{
-        Layout.alignment : Qt.AlignTop
-        Layout.fillWidth : true
-        Layout.fillHeight:true
-        CustomText{
-            Layout.alignment : Qt.AlignLeft
-            text: "Notifications"
-        }
-
-        Rectangle{
-
-            Layout.alignment : Qt.AlignRight
-
-            id:clearButton
-
-            height: clearText.implicitHeight + 16
-            width: clearText.implicitWidth + 16
-
-            color: Config.bg1
-
-            radius : 16
-
-            CustomText{
-
-                anchors.centerIn: parent
-
-                id: clearText
-                text: "Clear All"
-            }
-
-            MouseArea{
-                anchors.fill: parent
-                onClicked:{NotificationService.history.clear()}
-            }
-        }
-
+    PanelWindow {
+    anchors{
+        top:true
+        right: true
     }
 
+    margins{
+        top: Config.barHeight + 16
+        right: (Config.barHeight + 16 )/ 2
+    }
 
-    Repeater{
-        model:NotificationService.history
+    color : "transparent"
 
-                    Container{
-                id: pastCard
+    implicitWidth  : 300
+    implicitHeight : cardContiner.implicitHeight
+
+    exclusionMode : ExclusionMode.Ignore
+
+    ColumnLayout{
+        id: cardContiner
+        anchors.fill : parent
+        spacing : 8
+        uniformCellSizes: true
+
+        Repeater{
+            model: NotificationService.trackedNotifications
+
+            Container{
+                id: card
 
                 required property var modelData 
 
-                Layout.alignment : Qt.AlignTop
                 Layout.fillWidth : true
                 Layout.preferredHeight : 100
                 border{
@@ -79,7 +56,15 @@ import 'root:/'
                     anchors.margins: 16
                     anchors.fill : parent
                     spacing : 8
-                    
+                    Image{
+
+                        visible : modelData.image !== ""
+
+                        source: modelData.image
+                        Layout.preferredHeight : 24
+                        Layout.preferredWidth : 24
+                        }
+
                     ColumnLayout{
 
                         spacing : 18
@@ -99,19 +84,28 @@ import 'root:/'
                             weight : 400
                         }
                         }
-
-                    
                 }
+        }
 
+        Timer{
+            interval: 5000
+            running : modelData.urgency !== NotificationUrgency.Critical
+            repeat : false
+            onTriggered : {modelData.expire()}
 
         }
+
         MouseArea{
             anchors.fill:parent
-            onClicked:{NotificationService.history.remove(modelData.index,1)}
+            onClicked:{modelData.dismiss()}
         }
 
     }
 
-    }
+}
 
-        }
+}
+
+}
+
+}

@@ -13,12 +13,16 @@ import qs.services
 
 import "root:/"
 
+
+
 InnerContainer{
 
     id : root
 
-    width: bIcon.implicitWidth + 100
+    implicitWidth: bIcon.implicitWidth + 100
     height: Config.barHeight
+
+    signal clicked()
 
     
 
@@ -33,7 +37,7 @@ InnerContainer{
 
             MouseArea{
                 anchors.fill: parent
-                onClicked:{Hyprland.dispatch("hl.dsp.exec_cmd('qs ipc call bluetoothCenter toggle')")}
+                onClicked:{root.clicked()}
             }
 
 }

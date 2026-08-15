@@ -18,7 +18,7 @@ Container{
     id:root
 
     height : Config.barHeight
-    width : row.implicitWidth + 16
+    implicitWidth : row.implicitWidth + 16
 
     color : "transparent"
 

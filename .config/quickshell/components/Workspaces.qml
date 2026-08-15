@@ -20,7 +20,7 @@ Container{
     
 
                 height : Config.barHeight
-                width : ((root.workspaceActiveWidth * root.workspaces) + (root.workspaces * (margins + 1)))
+                implicitWidth : ((root.workspaceActiveWidth * root.workspaces) + (root.workspaces * (margins + 1)))
 
             RowLayout{
                 anchors.fill : parent

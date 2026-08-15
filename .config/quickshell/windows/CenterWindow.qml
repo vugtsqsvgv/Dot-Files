@@ -5,6 +5,8 @@ import QtQuick.Layouts
 import Quickshell.Services.Notifications 
 import Quickshell.Io
 import qs.components
+import qs.windows
+import qs.services
 
 import 'root:/'
 
@@ -41,31 +43,65 @@ IpcHandler{
 
         }
 
-        implicitWidth: 300
-        implicitHeight: 300
+        implicitWidth: 500
+        implicitHeight: 600
 
         color: "transparent"
+
+        Container{
+            anchors.fill: parent
+
+            RowLayout{
+                anchors.fill:parent
+                anchors.margins:8
+            
+
+            InnerContainer{
+                Layout.alignment:Qt.AlignTop
+                width:64
+                height:24
+                CustomTextIcon{
+                    anchors.centerIn:parent
+                    text: String.fromCodePoint(0xf030d)
+                }
+                MouseArea{
+                    anchors.fill:parent
+                    onClicked:{stackView.pop()}
+                }
+            }
+            
 
         StackView{
             id:stackView
             initialItem: initialview
             anchors.fill:parent
         }
-
-        Container{
+            }
+}
+}
+Component{
             id: initialview
-            anchors.fill: parent
 
             RowLayout{
                 anchors.fill: parent
                 anchors.margins:8
 
-            Bluetooth{}
-            Notifications{}
-
+            Bluetooth{
+                onClicked:{stackView.push(bluetoothWindow)}
+                }
+            Notifications{
+                onClicked:{stackView.push(notificationWindow)}
             }
-
+            }
         }
 
+    Component{
+        id:bluetoothWindow
+        BluetoothWindow{}
+    }
+
+    Component{
+        id:notificationWindow
+        NotificationWindow{}
     }
 }

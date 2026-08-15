@@ -16,7 +16,7 @@ Container{
 
     id : root
 
-    width: layout.implicitWidth + 16
+    implicitWidth: layout.implicitWidth + 16
     height: Config.barHeight
 
     RowLayout{

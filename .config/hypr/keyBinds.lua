@@ -11,7 +11,7 @@ local fileManager = "yazi"
 -------------------
 
  hl.on("hyprland.start", function () 
-   hl.exec_cmd("awww-daemon & qs")
+   hl.exec_cmd("awww-daemon & qs & hyprpm enable hyprglass")
  end)
 
 
