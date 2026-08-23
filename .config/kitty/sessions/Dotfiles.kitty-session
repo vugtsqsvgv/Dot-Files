@@ -1,0 +1,7 @@
+layout tall
+
+cd ~/archIso
+
+launch
+
+launch --cwd ~/archIso/baseline /usr/bin/yazi

@@ -5,6 +5,7 @@
 -- Set programs that you use
 local terminal = "kitty"
 local fileManager = "kitty -e yazi"
+local browser = "firefox"
 
 -------------------
 ---- AUTOSTART ----
@@ -34,6 +35,7 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("~/.config/rofi/scripts/launcher.sh")
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("~/.config/rofi/scripts/wallpaper.sh"))
+hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(browser))
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))

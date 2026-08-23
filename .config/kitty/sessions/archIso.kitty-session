@@ -1,0 +1,11 @@
+new_tab archIso
+
+layout tall
+
+cd ~/archIso
+
+launch
+
+launch --cwd ~/archIso/baseline /usr/bin/yazi
+focus
+focus_os_window
