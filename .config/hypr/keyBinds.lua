@@ -12,7 +12,7 @@ local browser = "firefox"
 -------------------
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd("awww-daemon & qs & hyprpm enable hyprglass")
+	hl.exec_cmd("awww-daemon & qs & hyprpm enable hyprglass & wl-paste --type text --watch cliphist store")
 end)
 
 ---------------------
@@ -36,6 +36,12 @@ hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("~/.config/rofi/scripts/wallpaper.sh"))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(browser))
+hl.bind(
+	mainMod .. " + H",
+	hl.dsp.exec_cmd(
+		"cliphist list | rofi -dmenu -theme '~/.config/rofi/themes/launcher.rasi' -display-columns 2 | cliphist decode | wl-copy"
+	)
+)
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))

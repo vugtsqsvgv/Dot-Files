@@ -4,7 +4,7 @@ cd ~
 
 read -p "Enter a message: " msg
 
-git add .config/hypr .config/rofi .config/quickshell .config/kitty .config/nvim .config/yazi .zshrc install.sh push.sh
+git add .config/hypr .config/rofi .config/quickshell .config/kitty .config/nvim .config/yazi .zshrc install.sh
 
 git commit -m "$msg"
 

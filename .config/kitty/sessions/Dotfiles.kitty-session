@@ -1,7 +1,9 @@
+new_tab dotfiles
+
 layout tall
 
-cd ~/archIso
+cd ~
 
 launch
 
-launch --cwd ~/archIso/baseline /usr/bin/yazi
+launch --cwd ~/.config /usr/bin/nvim
