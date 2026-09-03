@@ -1,0 +1,9 @@
+new_tab journal
+
+layout tall
+
+cd ~/journal
+
+launch --cwd ~/journal /usr/bin/nvim
+focus
+focus_os_window

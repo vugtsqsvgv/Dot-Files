@@ -55,7 +55,8 @@ hl.bind(mainMod .. " + SHIFT +  right ", hl.dsp.window.move({ workspace = "+1" }
 hl.bind(mainMod .. " + SHIFT +  left ", hl.dsp.window.move({ workspace = "-1" }))
 
 -- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
+--hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll

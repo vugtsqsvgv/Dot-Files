@@ -1,0 +1,9 @@
+ new_tab quickshell
+
+layout tall
+
+cd ~/.config/quickshell/
+
+launch --cwd ~/.config/quickshell/ /usr/bin/nvim
+focus
+focus_os_window

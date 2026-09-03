@@ -11,5 +11,20 @@ return {
         t("Name : "),
       }),
     })
+
+    ls.add_snippets("all", {
+      s("hook", {
+        t({ "[Trigger]", "Operation = " }),
+        i(1, "Install|Upgrade|Remove"),
+        t({ "", "Type = " }),
+        i(2, "Path|Package "),
+        t({ "", "Target = " }),
+        i(3, "<Path|PkgName>"),
+        t({ "", "[Action]", "when = " }),
+        i(4, "PreTransaction|PostTransaction"),
+        t({ "", "Exec = " }),
+        i(5, "<Command>"),
+      }),
+    })
   end,
 }

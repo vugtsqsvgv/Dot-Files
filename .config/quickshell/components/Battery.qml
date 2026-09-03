@@ -21,7 +21,13 @@ Container{
     
     border {
         width : 4
-        color : BatteryService.charging ? "#3d95e7" : (BatteryService.level <= 10 ? "#d65434" : BatteryService.level <= 30 ? "#dfae33" : BatteryService.level <= 70 ? "#8de82d" :  "#23f183" )
+        color : {
+          if (BatteryService.charging) return "#3d95e7"
+          if (BatteryService.level <=10 ) return "#d65434" 
+          if (BatteryService.level <= 30) return "#dfae33" 
+          if (BatteryService.level <= 70) return "#8de82d"
+          return  "#23f183"
+        }
 
     }
     
@@ -41,7 +47,14 @@ Container{
 
         CustomTextIcon{
             text : BatteryService.icon
-            color : BatteryService.charging ? "#3d95e7" : BatteryService.level <= 10 ? "#d65434" : BatteryService.level <= 30 ? "#dfae33" : BatteryService.level <= 70 ? "#8de82d" :  "#23f183" 
+            color : {
+          if (BatteryService.charging) return "#3d95e7"
+          if (BatteryService.level <=10 ) return "#d65434" 
+          if (BatteryService.level <= 30) return "#dfae33" 
+          if (BatteryService.level <= 70) return "#8de82d"
+          return  "#23f183"
+        }
+
 
         }
 

@@ -4,30 +4,28 @@ import Quickshell
 import QtQuick.Controls
 import QtQuick
 import QtQuick.Layouts
-import Quickshell.Hyprland
-import Quickshell.Services.SystemTray
 import Quickshell.Services.UPower
 import qs.components
 import qs.services
 
 import "root:/"
 
-Singleton{
+Singleton {
     id: root
 
+    property var battery: UPower.displayDevice
+    property bool charging: battery.state === UPowerDeviceState.Charging
+    property int level: Math.round(battery.percentage * 100)
 
-    property var battery : UPower.displayDevice
-    property bool charging : battery.state === UPowerDeviceState.charging
-    property int level : Math.round(battery.percentage * 100)
-
-    property string icon :{
-        if (level >= 100) return String.fromCodePoint(0xf240)
-        if (level <= 10 ) return String.fromCodePoint(0xf244)
-        if ( charging ) return String.fromCodePoint(0xf0084)
-
-        return String.fromCodePoint(0xf243)
+    property string icon: {
+        if (charging)
+            return String.fromCodePoint(0xf0084);
+        if (level <= 10)
+            return String.fromCodePoint(0xf243);
+        if (level <= 50)
+            return String.fromCodePoint(0xf242);
+        if (level <= 75)
+            return String.fromCodePoint(0xf241);
+        return String.fromCodePoint(0xf240);
     }
-
-
-
 }
