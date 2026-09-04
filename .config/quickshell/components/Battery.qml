@@ -14,7 +14,9 @@ import "root:/"
 Container{
 
 
-    id: root
+  id: root
+
+  visible : BatteryService.present
 
     height : Config.barHeight
     implicitWidth: layout.implicitWidth + 16

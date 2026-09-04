@@ -14,6 +14,7 @@ Singleton {
     id: root
 
     property var battery: UPower.displayDevice
+    property bool present : battery.isPresent
     property bool charging: battery.state === UPowerDeviceState.Charging
     property int level: Math.round(battery.percentage * 100)
 
