@@ -6,6 +6,6 @@ cd ~/archIso
 
 launch
 
-launch --cwd ~/archIso/baseline /usr/bin/nvim
+launch --cwd ~/archIso/releng /usr/bin/nvim
 focus
 focus_os_window
