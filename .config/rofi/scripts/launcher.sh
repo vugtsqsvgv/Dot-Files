@@ -1,3 +1,3 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 rofi -show drun -theme "~/.config/rofi/themes/launcher.rasi"
