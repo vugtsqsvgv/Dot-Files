@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Calamares
+Comment=Arch ISO Installer
+Exec=sh -c 'sudo /bin/env WAYLAND_DISPLAY="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY"  calamares'
+Icon=calamares
+Terminal=false
+Type=Application
+Categories=System;
