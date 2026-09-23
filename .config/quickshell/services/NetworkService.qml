@@ -16,9 +16,17 @@ Singleton {
     property var device: Networking.devices
     property var connectedDevice: device ? device.values.find(d => d.state === ConnectionState.Connected) : null
     property bool isWifi: connectedDevice ? connectedDevice.type === DeviceType.Wifi : false
+    property var wifiDevices: device ? device.values.find(d => d.type === DeviceType.Wifi) : null
+    property var wifiNetworks: wifiDevices ? wifiDevices.networks : null
     property var network: connectedDevice ? connectedDevice.networks.values.find(n => n.state === ConnectionState.Connected) : null
     property string networkName: network ? network.name : null
     property real signal: network ? network.signalStrength : 0
+
+    Component.onCompleted: {
+        if (wifiDevices) {
+            wifiDevices.scannerEnabled = true;
+        }
+    }
 
     property string icon: {
         if (isWifi) {
@@ -32,7 +40,9 @@ Singleton {
                 return String.fromCodePoint(0xf0925);
             return String.fromCodePoint(0xf0928);
         } else {
-            return String.fromCodePoint(0xf0317);
+            if (connectedDevice)
+                return String.fromCodePoint(0xf0317);
+            return "-";
         }
     }
 }
